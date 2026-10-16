@@ -1,0 +1,11 @@
+column_name,missing_count,total_rows,missing_pct
+emp_length_yrs,9487,120000,7.906
+revol_util,7200,120000,6.0
+dti,0,120000,0.0
+annual_inc,0,120000,0.0
+delinq_2yrs,0,120000,0.0
+inq_last_6mths,0,120000,0.0
+open_acc,0,120000,0.0
+pub_rec,0,120000,0.0
+revol_bal,0,120000,0.0
+total_acc,0,120000,0.0

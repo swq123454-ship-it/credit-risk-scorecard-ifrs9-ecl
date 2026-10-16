@@ -1,0 +1,7 @@
+check_name,flagged_rows
+dti_out_of_range,0
+fico_out_of_range,0
+int_rate_non_positive,0
+revol_util_out_of_range,0
+recovery_exceeds_outstanding,0
+resolved_without_label,0

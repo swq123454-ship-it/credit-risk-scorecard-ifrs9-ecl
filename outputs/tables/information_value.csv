@@ -1,0 +1,24 @@
+feature,information_value,interpretation,bins,monotonic
+grade,0.9027,suspicious (check for leakage),7,True
+int_rate,0.8715,suspicious (check for leakage),10,True
+fico_low,0.3761,strong,7,True
+installment_to_income,0.1188,medium,7,True
+revol_util,0.1087,medium,6,True
+annual_inc,0.0577,weak,7,True
+dti,0.0478,weak,4,True
+inq_last_6mths,0.0261,weak,3,True
+addr_state,0.0166,unpredictive,20,True
+delinq_2yrs,0.0144,unpredictive,2,True
+risk_rank_in_grade,0.014,unpredictive,2,True
+revol_bal,0.0125,unpredictive,3,True
+home_ownership,0.0091,unpredictive,4,True
+pub_rec,0.0075,unpredictive,2,True
+loan_amnt,0.0069,unpredictive,3,True
+open_acc,0.0066,unpredictive,3,True
+total_acc,0.0047,unpredictive,2,True
+term_months,0.0043,unpredictive,2,True
+purpose,0.0024,unpredictive,8,True
+state_volume_share,0.0016,unpredictive,2,True
+emp_length_yrs,0.0009,unpredictive,2,True
+verification_status,0.0007,unpredictive,3,True
+borrower_prior_loans,0.0,unpredictive,2,True

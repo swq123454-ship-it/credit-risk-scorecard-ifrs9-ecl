@@ -1,0 +1,7 @@
+sample,model,auc,gini,ks,brier
+test (2016),Scorecard (uncalibrated),0.7465,0.4929,0.3835,0.02717
+test (2016),Scorecard (calibrated),0.7524,0.5047,0.3892,0.02711
+test (2016),GBM challenger,0.7192,0.4384,0.3341,0.02754
+oot (2017),Scorecard (uncalibrated),0.7609,0.5219,0.3884,0.02368
+oot (2017),Scorecard (calibrated),0.7592,0.5183,0.3841,0.02368
+oot (2017),GBM challenger,0.7281,0.4561,0.3441,0.02411

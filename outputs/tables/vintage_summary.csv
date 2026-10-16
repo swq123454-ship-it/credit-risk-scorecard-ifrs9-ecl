@@ -1,0 +1,4 @@
+issue_year,resolved_loans,defaults,observed_default_rate,avg_exposure_at_default
+2013,10738,2602.0,0.2423,1455.17
+2014,13139,2941.0,0.2238,1381.36
+2015,16756,3285.0,0.196,1222.25

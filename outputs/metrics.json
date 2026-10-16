@@ -1,0 +1,251 @@
+{
+  "data_mode": "synthetic",
+  "random_seed": 42,
+  "counts": {
+    "loans_total": 120000,
+    "resolved_total": 97277,
+    "train": 40633,
+    "test": 18720,
+    "oot": 21792,
+    "open_book": 22723
+  },
+  "portfolio": {
+    "target_definition": "default within 12 months of origination",
+    "train_default_rate_12m": 0.0303,
+    "test_default_rate_12m": 0.0286,
+    "oot_default_rate_12m": 0.0248,
+    "train_lifetime_default_rate": 0.2173,
+    "oot_lifetime_default_rate": 0.1757
+  },
+  "scorecard": {
+    "features_used": [
+      "int_rate",
+      "annual_inc",
+      "dti",
+      "fico_low",
+      "inq_last_6mths",
+      "revol_util",
+      "installment_to_income",
+      "grade"
+    ],
+    "features_screened_out": [
+      "term_months",
+      "loan_amnt",
+      "emp_length_yrs",
+      "delinq_2yrs",
+      "open_acc",
+      "pub_rec",
+      "revol_bal",
+      "total_acc",
+      "risk_rank_in_grade",
+      "state_volume_share",
+      "borrower_prior_loans",
+      "home_ownership",
+      "verification_status",
+      "purpose",
+      "addr_state"
+    ],
+    "features_flagged_for_leakage_review": [
+      "int_rate",
+      "grade"
+    ],
+    "leakage_review_outcome": "Retained. Both flagged features are origination-time information: the internal risk grade and the contract interest rate, which the lender itself set at origination. The IV ceiling is a review trigger, not an automatic exclusion.",
+    "oot_auc": 0.7592,
+    "oot_gini": 0.5183,
+    "oot_ks": 0.3841,
+    "oot_brier": 0.02368,
+    "oot_auc_ci95": [
+      0.7418,
+      0.776
+    ]
+  },
+  "gbm": {
+    "backend": "lightgbm",
+    "oot_auc": 0.7281,
+    "oot_gini": 0.4561,
+    "oot_ks": 0.3441,
+    "oot_brier": 0.02411
+  },
+  "stability": {
+    "score_psi_train_vs_test": 0.0044,
+    "score_psi_train_vs_oot": 0.036,
+    "band_test": "stable",
+    "band_oot": "stable",
+    "max_feature_psi_oot": 0.049
+  },
+  "decisions": {
+    "best_pd_cutoff": 0.06,
+    "approval_rate_at_cutoff": 0.8726,
+    "expected_cost_units_at_cutoff": 473.0
+  },
+  "lgd": {
+    "training_defaults": 6047,
+    "holdout_defaults": 5199,
+    "oot": {
+      "sample": "oot (2016-2017)",
+      "defaults": 5199,
+      "model_mae": 0.0239,
+      "benchmark_mae": 0.0408,
+      "model_r2": 0.824,
+      "benchmark_r2": 0.4727,
+      "observed_mean_lgd": 0.8947,
+      "model_mean_lgd": 0.8905,
+      "benchmark_mean_lgd": 0.8938,
+      "mae_improvement_pct": 41.42
+    },
+    "in_sample": {
+      "sample": "train (2013-2015)",
+      "defaults": 6047,
+      "model_mae": 0.0224,
+      "benchmark_mae": 0.041,
+      "model_r2": 0.8371,
+      "benchmark_r2": 0.4294,
+      "observed_mean_lgd": 0.9008,
+      "model_mean_lgd": 0.8961,
+      "benchmark_mean_lgd": 0.9008,
+      "mae_improvement_pct": 45.37
+    },
+    "model_beats_benchmark": true
+  },
+  "ead": {
+    "model": "default timing profile x contractual amortisation",
+    "oot": {
+      "defaults": 5199,
+      "observed_mean_exposure_ratio": 0.528,
+      "predicted_mean_exposure_ratio": 0.5866,
+      "mae_exposure_ratio": 0.2245
+    }
+  },
+  "ifrs9": {
+    "total_exposure": 314598257.25,
+    "weighted_ecl": 8375153.96,
+    "weighted_coverage_ratio_pct": 2.6622,
+    "lgd_basis": "modeled LGD",
+    "lgd_model_earned_selection": true,
+    "scenarios": [
+      {
+        "scenario": "optimistic",
+        "unemployment_delta_pp": -1.5,
+        "pd_multiplier": 0.7985,
+        "weight": 0.1,
+        "total_exposure": 314598257.25,
+        "total_ecl": 5286154.38,
+        "coverage_ratio_pct": 1.6803,
+        "stage1_ecl": 2743780.72,
+        "stage2_ecl": 2487111.78,
+        "stage3_ecl": 55261.88
+      },
+      {
+        "scenario": "base",
+        "unemployment_delta_pp": 0.0,
+        "pd_multiplier": 1.0,
+        "weight": 0.5,
+        "total_exposure": 314598257.25,
+        "total_ecl": 6869152.19,
+        "coverage_ratio_pct": 2.1835,
+        "stage1_ecl": 3018321.08,
+        "stage2_ecl": 3782019.31,
+        "stage3_ecl": 68811.8
+      },
+      {
+        "scenario": "adverse",
+        "unemployment_delta_pp": 2.0,
+        "pd_multiplier": 1.3499,
+        "weight": 0.28,
+        "total_exposure": 314598257.25,
+        "total_ecl": 9386418.82,
+        "coverage_ratio_pct": 2.9836,
+        "stage1_ecl": 3785340.23,
+        "stage2_ecl": 5509099.64,
+        "stage3_ecl": 91978.95
+      },
+      {
+        "scenario": "severe",
+        "unemployment_delta_pp": 4.5,
+        "pd_multiplier": 1.964,
+        "weight": 0.12,
+        "total_exposure": 314598257.25,
+        "total_ecl": 14864709.68,
+        "coverage_ratio_pct": 4.725,
+        "stage1_ecl": 3390871.97,
+        "stage2_ecl": 11342257.61,
+        "stage3_ecl": 131580.09
+      }
+    ],
+    "assumptions": {
+      "max_lifetime_months": 60,
+      "lgd_floor": 0.45,
+      "lgd_cap": 0.95,
+      "discount_rate_floor": 0.05,
+      "stage1_horizon_months": 12,
+      "sicr_dpd_threshold": 30,
+      "sicr_pd_threshold": 0.06,
+      "stage3_dpd_threshold": 90
+    },
+    "scenario_definitions": {
+      "optimistic": -1.5,
+      "base": 0.0,
+      "adverse": 2.0,
+      "severe": 4.5
+    },
+    "scenario_weights": {
+      "optimistic": 0.1,
+      "base": 0.5,
+      "adverse": 0.28,
+      "severe": 0.12
+    },
+    "pd_unemployment_elasticity": 0.15,
+    "sicr_sensitivity": [
+      {
+        "sicr_pd_threshold": 0.03,
+        "stage1_loans": 16414,
+        "stage2_loans": 6150,
+        "stage3_loans": 159,
+        "stage2_share_pct": 27.07,
+        "total_ecl": 7836556.86,
+        "ecl_vs_base_pct": 14.08
+      },
+      {
+        "sicr_pd_threshold": 0.045,
+        "stage1_loans": 19349,
+        "stage2_loans": 3215,
+        "stage3_loans": 159,
+        "stage2_share_pct": 14.15,
+        "total_ecl": 7012340.85,
+        "ecl_vs_base_pct": 2.08
+      },
+      {
+        "sicr_pd_threshold": 0.06,
+        "stage1_loans": 19716,
+        "stage2_loans": 2848,
+        "stage3_loans": 159,
+        "stage2_share_pct": 12.53,
+        "total_ecl": 6869152.19,
+        "ecl_vs_base_pct": 0.0
+      },
+      {
+        "sicr_pd_threshold": 0.08,
+        "stage1_loans": 21395,
+        "stage2_loans": 1169,
+        "stage3_loans": 159,
+        "stage2_share_pct": 5.14,
+        "total_ecl": 6025115.31,
+        "ecl_vs_base_pct": -12.29
+      },
+      {
+        "sicr_pd_threshold": 0.12,
+        "stage1_loans": 22163,
+        "stage2_loans": 401,
+        "stage3_loans": 159,
+        "stage2_share_pct": 1.76,
+        "total_ecl": 5459575.65,
+        "ecl_vs_base_pct": -20.52
+      }
+    ]
+  },
+  "score_scale": {
+    "base_score": 600,
+    "base_odds": 20,
+    "pdo": 50
+  }
+}
