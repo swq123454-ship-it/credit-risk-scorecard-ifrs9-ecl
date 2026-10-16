@@ -1,0 +1,43 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Testing and linting
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Data: never commit the book itself. data/raw is populated by the download
+# step, everything else is rebuilt by `make pipeline`.
+data/raw/*
+data/interim/*
+data/processed/*
+!data/raw/.gitkeep
+!data/interim/.gitkeep
+!data/processed/.gitkeep
+
+# The SQLite warehouse is a build artefact
+*.db
+*.sqlite
+*.sqlite3
+
+# Plotly / notebook checkpoints
+.ipynb_checkpoints/
+
+# OS noise
+.DS_Store
+Thumbs.db
+
+# Editors
+.idea/
+.vscode/
+*.swp
