@@ -1,22 +1,26 @@
+# Pinned to the versions the committed outputs were produced with, so a clone
+# reproduces the numbers in the README rather than the current behaviour of an
+# unpinned dependency.
 # ---------------------------------------------------------------------------
 # Core data stack
 # ---------------------------------------------------------------------------
-pandas>=2.1
-numpy>=1.26
+pandas==3.0.5
+numpy==2.5.3
 
 # ---------------------------------------------------------------------------
 # Modelling
 # ---------------------------------------------------------------------------
-scikit-learn>=1.4
-lightgbm>=4.0
+scikit-learn==1.9.0
+lightgbm==4.7.0
 
 # ---------------------------------------------------------------------------
 # Visualisation and reporting
 # ---------------------------------------------------------------------------
-matplotlib>=3.8
-tabulate>=0.9
+matplotlib==3.11.1
+tabulate==0.10.0
 
 # ---------------------------------------------------------------------------
-# Testing
+# Testing and linting
 # ---------------------------------------------------------------------------
-pytest>=8.0
+pytest==9.1.1
+ruff==0.17.1

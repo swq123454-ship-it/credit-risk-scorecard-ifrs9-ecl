@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "credit-risk-scorecard-ifrs9"
 version = "1.0.0"
 description = "PD scorecard with WOE binning plus an IFRS 9 three-stage expected credit loss engine"
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 dynamic = ["dependencies"]
 
 [project.optional-dependencies]
