@@ -35,9 +35,13 @@ def _save(figure, name: str) -> Path:
 def plot_roc(roc_frames: dict[str, pd.DataFrame], aucs: dict[str, float], name: str = "roc_curve.png") -> Path:
     figure, axes = plt.subplots(figsize=(5.2, 4.6))
     colours = [PALETTE["primary"], PALETTE["secondary"], PALETTE["accent"]]
-    # strict: every model needs its own colour; a mismatch is a caller bug, not a
-    # reason to draw two curves in the same colour.
-    for (label, frame), colour in zip(roc_frames.items(), colours, strict=True):
+    # The palette holds one colour per model the pipeline can produce; a caller
+    # passing more models than colours is a bug, so that direction is strict. The
+    # slice covers the legitimate case of fewer models than colours (the scorecard
+    # and the challenger are two curves on a three-colour palette).
+    if len(roc_frames) > len(colours):
+        raise ValueError(f"{len(roc_frames)} models for a {len(colours)}-colour palette")
+    for (label, frame), colour in zip(roc_frames.items(), colours, strict=False):
         axes.plot(
             frame["false_positive_rate"],
             frame["true_positive_rate"],
